@@ -1,0 +1,173 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap");
+
+:root {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --highlight-color: #4caf50;
+  --grid-color: #e0e0e0;
+  --header-bg: rgba(255, 255, 255, 0.9);
+  --header-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  font-family: "Cairo", sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.calendar-container {
+  max-width: 800px;
+  width: 100%;
+  margin-top: 80px;
+}
+
+.calendar-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  /* background-color: var(--header-bg); */
+  backdrop-filter: blur(10px);
+  box-shadow: var(--header-shadow);
+  z-index: 1000;
+}
+
+.nav-button {
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  background-color: var(--highlight-color);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+  background-color: #45a049;
+}
+
+.nav-button img {
+  width: 20px;
+  height: 20px;
+}
+
+.calendar-grid {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 10px;
+  padding: 10px;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  border: 1px solid var(--grid-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  transition: background-color 0.3s, transform 0.2s;
+  border-radius: 8px;
+  background-color: var(--bg-color);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+}
+
+.calendar-day:hover {
+  background-color: rgba(76, 175, 80, 0.1);
+  transform: translateY(-5px);
+}
+
+.calendar-day .day-name {
+  font-size: 1em;
+  margin-top: 5px;
+  color: #666;
+}
+
+.current-day {
+  background-color: var(--highlight-color);
+  color: white;
+}
+
+.current-day .day-name {
+  color: white;
+}
+
+.hijri-date,
+.coptic-date {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8em;
+  color: #555;
+}
+
+.theme-toggle {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.theme-toggle:hover {
+  background-color: #555;
+}
+
+body.dark-mode {
+  --bg-color: #1e1e1e;
+  --text-color: #ffffff;
+  --grid-color: #444;
+  --header-bg: rgba(30, 30, 30, 0.9);
+  --header-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 600px) {
+  .calendar-grid {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 5px;
+  }
+
+  .calendar-day {
+    font-size: 1em;
+  }
+
+  .calendar-day .day-name {
+    font-size: 0.8em;
+  }
+
+  .hijri-date,
+  .coptic-date {
+    font-size: 0.7em;
+  }
+
+  .calendar-header {
+    padding: 10px;
+  }
+
+  .nav-button {
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+  }
+}
